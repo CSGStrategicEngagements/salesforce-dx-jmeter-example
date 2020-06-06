@@ -59,29 +59,58 @@ chmod +x call_hello_world.sh
 
 ### Running the JMeter Performance Test
 
-The load tests are implemented with JMeter.
-When running the tests, you must provide the URL for the community. This is
-different every time a new scratch org is provisioned.
+The load tests are implemented with JMeter. Since this example project leverages
+scratch orgs there are a few components that must be updated every time a new
+scratch org is created. We must specify _where_ the tests should point to and we
+must get an _access token_ for the tests to use.
 
-JMeter can be ran in GUI mode or headless via the terminal. When ran from the terminal
-it can generate a web dashboard of test results. The below snippet demonstrates how to do this.
+#### Finding the Scratch Org Domain
 
-The tests can be ran with the below command.
+When running the tests, you must provide the _domain_ for the scratch org instance.
+This is different every time a new scratch org is provisioned.
+
+1. First find the Instance URL
+   To find the scratch org instance url:
 
 ```shell
+source scripts/bash/auth_helper.sh
+getInstanceUrl testing_example
+# Should Ouput something like
+# https://force-ruby-688-dev-ed.cs52.my.salesforce.com/
+```
+
+2. From the instance URL copy the domain. For the instance URL
+   https://force-ruby-688-dev-ed.cs52.my.salesforce.com/ the domain
+   is _force-ruby-688-dev-ed.cs52.my.salesforce.com_. It is important
+   to remove the trailing /.
+
+#### Running JMeter
+
+JMeter can be ran in GUI mode or headless via the terminal. Use GUI mode for creating tests
+and the terminal for actually running tests.
+
+**Test Outputs**
+When running via the terminal, JMeter can generate a web dashboard and CSV files of test results.
+The below snippet demonstrates how to do this.
+
+```shell
+ORG_ALIAS='testing_example'
+source scripts/bash/auth_helper.sh
+getEnvVars $ORG_ALIAS
 jmeter -n \
-  -t ./jmeter_tests/HelloWorldRestTests.jmx \
-  -Jsf_url=<the community url>
+  -t ./jmeter_tests/Rest_Service_Test_Examples.jmx \
+  -Jsf_domain=$SF_DOMAIN \
+  -Jauth_token=$ACCESS_TOKEN \
   -l results.csv \
   -e -o ./report
+```
 
-# Open the report
-cd report
-open index.html
+You can also run the test, output the results to a CSV file and then generate the HTML report from the file. This is useful for scenerios
+where you're running the test on a remote machine and need to look
+at the report locally or share the results across people.
 
-# you can also run the test, output the results to a CSV file and then
-# generate the HTML report from the file.
-
+```shell
+# Generate a report from an existing result CSV file.
 jmeter -g results.csv -o ./report
 ```
 

@@ -33,3 +33,8 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+# Don't include JMeter's generated report, logs or CSV files.
+report  
+results.csv
+jmeter.log

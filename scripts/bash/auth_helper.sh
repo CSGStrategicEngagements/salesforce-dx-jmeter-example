@@ -24,6 +24,18 @@ function getOrgInfo(){
 }
 
 ###############################################################################
+# Given an org alias, finds the scratch org's instance URL
+#
+# Parameters
+# $1 - The Org Alias
+###############################################################################
+getInstanceUrl(){
+  JSON=$(getOrgInfo $1)
+  SF_URL=$(echo $JSON | jq -r '.result.instanceUrl')
+  echo $SF_URL
+}
+
+###############################################################################
 # Get the access token and url with jq.
 #
 # Parameters
@@ -33,6 +45,7 @@ function getEnvVars(){
 	JSON=$(getOrgInfo $1)
 	ACCESS_TOKEN=$(echo $JSON | jq -r '.result.accessToken')
 	SF_URL=$(echo $JSON | jq -r '.result.instanceUrl')
-	# Sanatize the access token for curl.
-	#ACCESS_TOKEN=${ACCESS_TOKEN/'!'/'\!'} 
+  
+  TEMP=${SF_URL#"https://"} # Remove prefix.
+  SF_DOMAIN=${TEMP%"/"} # Remove suffix
 }
