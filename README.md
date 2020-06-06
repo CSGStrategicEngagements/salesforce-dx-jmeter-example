@@ -1,19 +1,23 @@
 # Salesforce DX JMeter Example
-- - -
-This is an example project for getting started with JMeter for 
+
+---
+
+This is an example project for getting started with JMeter for
 testing Salesforce Apex REST services.
 
 ## Getting Started
 
 ### Project Dependencies
 
-- NPM and Node.js
 - The Salesforce CLI
+- NPM and Node.js
 - Apache JMeter
+- JQ: The commandline JSON query helper tool.
 
 ### Setup
-After the project dependencies are installed, you need to install 
-the code dependencies. 
+
+After the project dependencies are installed, you need to install
+the code dependencies.
 
 1. Install code dependendencies.
 
@@ -21,15 +25,42 @@ the code dependencies.
 npm install
 ```
 
-2. Deploy the Scratch Org
+2. Provision a scratch org and deploy the metadata.
+
 ```shell
-npm run scratch
+npm run scratch:init
 ```
 
-### Running The Tests
+### Manually Invoking the Web Service
 
-The load tests are implemented by combining Selenium Web Driver with JMeter.
-When running the tests, you must provide the URL for the community. This is 
+There is a helper Bash script for manually invoking the REST service. This
+is provided to give an example of how to use the Salesforce CLI to handle
+authentication. The following steps demonstrate how to use the helper script
+to manually call the REST service.
+
+1. Navigate to the script's directory.
+
+```shell
+cd scripts/bash
+```
+
+2. Give the script permission to run.
+
+```shell
+chmod +x call_hello_world.sh
+```
+
+3. Run the Script. This assumes you've already provisioned a scratch org and
+   deployed the service's metadata.
+
+```shell
+./call_hello_world.sh
+```
+
+### Running the JMeter Performance Test
+
+The load tests are implemented with JMeter.
+When running the tests, you must provide the URL for the community. This is
 different every time a new scratch org is provisioned.
 
 JMeter can be ran in GUI mode or headless via the terminal. When ran from the terminal
@@ -48,11 +79,12 @@ jmeter -n \
 cd report
 open index.html
 
-# you can also run the test, output the results to a CSV file and then 
+# you can also run the test, output the results to a CSV file and then
 # generate the HTML report from the file.
 
 jmeter -g results.csv -o ./report
 ```
 
 ## Resources
+
 TBD
