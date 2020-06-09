@@ -38,3 +38,6 @@ $RECYCLE.BIN/
 report  
 results.csv
 jmeter.log
+
+# Don't include Jupyter generated stuff
+.ipynb_checkpoints/

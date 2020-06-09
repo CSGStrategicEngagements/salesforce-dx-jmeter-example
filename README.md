@@ -105,6 +105,11 @@ jmeter -n \
   -e -o ./report
 ```
 
+To view the report just open it in your web browser.
+```shell
+open report/index.html
+```
+
 You can also run the test, output the results to a CSV file and then generate the HTML report from the file. This is useful for scenerios
 where you're running the test on a remote machine and need to look
 at the report locally or share the results across people.
@@ -115,5 +120,19 @@ jmeter -g results.csv -o ./report
 ```
 
 ## Resources
+### JMeter
+__Configuring JMeter__
+* [JMeter Property Files](https://jmeter.apache.org/usermanual/properties_reference.html)
+* [How to specify properties on the CLI](https://jmeter.apache.org/usermanual/get-started.html#override)
+* [Configure Result File Properties](https://jmeter.apache.org/usermanual/properties_reference.html#results_file_config)
+* [Controlling JMeter Output Results](https://www.blazemeter.com/blog/useful-jmeter-properties-save-results-save-world)
+* [Options for Saving Response Data](https://www.blazemeter.com/blog/how-to-save-response-data-in-jmeter)
 
-TBD
+__Best Practices__
+* [Launching JMeter](https://www.blazemeter.com/blog/5-ways-launch-jmeter-test-without-using-jmeter-gui)
+* [Building Large Test Scripts](https://www.blazemeter.com/blog/how-manage-large-jmeter-scripts-jmeter-test-fragments)
+
+__Common Challenges__
+* [Common JMeter Challenges](https://www.blazemeter.com/blog/3-common-issues-when-running-jmeter-scripts-and-how-solve-them)
+* [Testing OAuth Protected Services](https://www.blazemeter.com/blog/how-run-performance-tests-oauth-secured-apps-jmeter)
+* [Testing Secure Services](https://www.blazemeter.com/blog/take-pain-out-load-testing-secure-web-services)
