@@ -22,17 +22,20 @@ pip3 install jupyterlab
 # Install the Python Libraries used by the Jupyter Notebooks.
 pip3 install -r requirements.txt
 
-# Install Pandocs and Tex to enable exporting as PDF.
+# (Optional)Install Pandocs and Tex to enable exporting as PDF.
 brew install pandoc
 brew cask install mactex-no-gui
 ```
 
 ## Exporting to PDF
-After installing Tex you've got to add the location of xelatex to your path. 
+
+After installing Tex you've got to add the location of xelatex to your path.
 To do that, place the following line in your .bash_profile script.
+
 ```shell
 export PATH=/Library/TeX/texbin:$PATH
 ```
+
 If you already have JupyterLab running, restart it to get the path change.
 
 ## Using JupyterLab
@@ -44,9 +47,12 @@ jupyter lab
 ```
 
 ## Exploring the Test Result Data
+
 Running the JMeter tests results in generating the results.csv file. We can use JuypterLabs
 to explore the test run results.
 
 ## Related Resources
+
 - [List of Jupyter Kernals](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
 - [Python String Formatting Cookbook](https://mkaz.blog/code/python-string-format-cookbook/)
+- [Working with Time in Python](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)
