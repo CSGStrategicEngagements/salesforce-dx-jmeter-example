@@ -5,3 +5,4 @@ pandas >= 0.22.0
 matplotlib >= 2.1.2
 statsmodels >= 0.8.0
 seaborn
+voila

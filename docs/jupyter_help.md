@@ -51,6 +51,16 @@ jupyter lab
 Running the JMeter tests results in generating the results.csv file. We can use JuypterLabs
 to explore the test run results.
 
+## Hosting the Notebook as a Web Site
+We can use [Voila](https://blog.jupyter.org/and-voil%C3%A0-f6a2c08a4a93) to render a notebook as a web site.
+```shell
+cd notebooks
+voila SingleSampleSetAnalysis.ipynb --theme=dark
+```
+
+I've found that I can get better looking reports by rendering the notebook with Voila and then 
+printing the site to PDF using the browser's print capabilities.
+
 ## Related Resources
 
 - [List of Jupyter Kernals](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
