@@ -46,6 +46,8 @@ jmeter -n \
   -t ./jmeter_tests/Rest_Service_Test_Examples.jmx \
   -Jsf_domain=$SF_DOMAIN \
   -Jauth_token=$ACCESS_TOKEN \
+  -Jloop_count=100 \
+  -Jglobal.threads=10 \
   -l results.csv \
   -e -o ./report
 ```
