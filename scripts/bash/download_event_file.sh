@@ -142,6 +142,12 @@ function getLogFileContents(){
 	fi 
 }
 
+###############################################################################
+# Find the number of daily log files that were created after a target date.
+#
+# Usage
+# howMuch
+###############################################################################
 function howMuch(){
 	query=$(cat <<-EOM
 		SELECT count(ID)
